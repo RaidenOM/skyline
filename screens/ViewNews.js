@@ -20,7 +20,6 @@ export default function ViewNews() {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: "#ffffff",
     padding: 16,
     paddingBottom: 40,
   },

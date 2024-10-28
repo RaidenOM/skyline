@@ -6,7 +6,7 @@ export const NewsContext = createContext();
 export function NewsContextProvider({ children }) {
   const [allNews, setAllNews] = useState([]);
 
-  async function fetchNews(country = "us", category) {
+  async function fetchNews(country, category) {
     const news = await fetchNewsFromBackend(country, category);
     setAllNews(news);
   }

@@ -9,6 +9,10 @@ import { NewsContextProvider } from "./store/news-context";
 import { createStackNavigator } from "@react-navigation/stack";
 import ViewNews from "./screens/ViewNews";
 import IconButton from "./components/ui/IconButton";
+import AddLocation from "./screens/AddLocation";
+import { WeatherContextProvider } from "./store/weather-context";
+import ViewWeather from "./screens/ViewWeather";
+import { Text } from "react-native";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -35,7 +39,6 @@ function TabBarGradient() {
       colors={["#9403fc", "#be03fc", "#fc03a5"]}
       style={{
         flex: 1,
-        borderRadius: 20,
       }}
       start={{ x: 0, y: 1 }}
       end={{ x: 1, y: 0 }}
@@ -59,7 +62,14 @@ function NewsStack() {
       <Stack.Screen
         name="NewsHome"
         component={NewsHome}
-        options={{ title: "News" }}
+        options={{
+          title: "News",
+          headerLeft: ({ tintColor }) => (
+            <Text style={{ color: "#fc03a5", marginHorizontal: 15 }}>
+              Skylink
+            </Text>
+          ),
+        }}
       />
       <Stack.Screen
         name="ViewNews"
@@ -94,10 +104,27 @@ function WeatherStack() {
                 color={tintColor}
                 size={24}
                 style={{ marginHorizontal: 15 }}
+                onPress={() => navigation.navigate("AddLocation")}
               />
             ),
+            headerLeft: ({ tintColor }) => (
+              <Text style={{ color: "#fc03a5", marginHorizontal: 15 }}>
+                Skylink
+              </Text>
+            ),
+            title: "Weather",
           };
         }}
+      />
+      <Stack.Screen
+        name="AddLocation"
+        component={AddLocation}
+        options={{ title: "Add City" }}
+      />
+      <Stack.Screen
+        name="ViewWeather"
+        component={ViewWeather}
+        options={{ title: "Weather" }}
       />
     </Stack.Navigator>
   );
@@ -106,47 +133,47 @@ function WeatherStack() {
 export default function App() {
   return (
     <>
-      <NewsContextProvider>
-        <NavigationContainer>
-          <Tab.Navigator
-            screenOptions={{
-              headerShown: false,
-              tabBarBackground: () => <TabBarGradient />,
-              tabBarActiveTintColor: "white",
-              tabBarInactiveTintColor: "#ccc",
-              tabBarStyle: {
-                margin: 10,
-                height: 60,
-                paddingVertical: 10,
-                position: "absolute",
-              },
-            }}
-          >
-            <Tab.Screen
-              name="News"
-              component={NewsStack}
-              options={{
-                tabBarIcon: ({ color, size }) => (
-                  <Ionicons
-                    name="newspaper-outline"
-                    size={size}
-                    color={color}
-                  />
-                ),
+      <WeatherContextProvider>
+        <NewsContextProvider>
+          <NavigationContainer>
+            <Tab.Navigator
+              screenOptions={{
+                headerShown: false,
+                tabBarBackground: () => <TabBarGradient />,
+                tabBarActiveTintColor: "white",
+                tabBarInactiveTintColor: "#ccc",
+                tabBarStyle: {
+                  height: 60,
+                  paddingVertical: 10,
+                },
               }}
-            />
-            <Tab.Screen
-              name="Weather"
-              component={WeatherStack}
-              options={{
-                tabBarIcon: ({ color, size }) => (
-                  <Ionicons name="rainy-outline" size={size} color={color} />
-                ),
-              }}
-            />
-          </Tab.Navigator>
-        </NavigationContainer>
-      </NewsContextProvider>
+            >
+              <Tab.Screen
+                name="News"
+                component={NewsStack}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Ionicons
+                      name="newspaper-outline"
+                      size={size}
+                      color={color}
+                    />
+                  ),
+                }}
+              />
+              <Tab.Screen
+                name="Weather"
+                component={WeatherStack}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Ionicons name="rainy-outline" size={size} color={color} />
+                  ),
+                }}
+              />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </NewsContextProvider>
+      </WeatherContextProvider>
       <StatusBar style="light" />
     </>
   );

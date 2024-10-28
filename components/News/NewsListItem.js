@@ -5,26 +5,26 @@ import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 export default function NewsListItem({ item }) {
   const navigation = useNavigation();
   return (
-    <Pressable
-      style={styles.container}
-      android_ripple={{ color: "#ccc" }}
-      onPress={() => navigation.navigate("ViewNews", { item })}
-    >
-      <Image source={{ uri: item.urlToImage }} style={styles.image} />
-      <Text style={styles.title}>{item.title}</Text>
-      <Text style={styles.date}>{item.date}</Text>
-      <Text style={styles.description}>{item.description}</Text>
-    </Pressable>
+    <View style={styles.outerContainer}>
+      <Pressable
+        style={styles.container}
+        android_ripple={{ color: "#ccc" }}
+        onPress={() => navigation.navigate("ViewNews", { item })}
+      >
+        <Image source={{ uri: item.urlToImage }} style={styles.image} />
+        <Text style={styles.title}>{item.title}</Text>
+        <Text style={styles.date}>{item.date}</Text>
+        <Text style={styles.description}>{item.description}</Text>
+      </Pressable>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 16,
+  outerContainer: {
     marginVertical: 8,
     marginHorizontal: 16,
-    backgroundColor: "#f9f9f9",
-    borderRadius: 8,
+    overflow: "hidden",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -32,7 +32,12 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
-    elevation: 2, // For Android shadow effect
+    elevation: 2, // For Android shadow effects
+    borderRadius: 8,
+  },
+  container: {
+    padding: 16,
+    backgroundColor: "#f9f9f9",
   },
   image: {
     width: "100%", // Full width of the container
