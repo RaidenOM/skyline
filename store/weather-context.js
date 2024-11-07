@@ -4,7 +4,6 @@ import {
   addCityToBackend,
   deleteCityFromBackend,
 } from "../backend";
-import { all } from "axios";
 
 export const WeatherContext = createContext();
 

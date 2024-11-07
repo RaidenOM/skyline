@@ -107,7 +107,7 @@ function WeatherStack() {
                 onPress={() => navigation.navigate("AddLocation")}
               />
             ),
-            headerLeft: ({ tintColor }) => (
+            headerLeft: () => (
               <Text style={{ color: "#fc03a5", marginHorizontal: 15 }}>
                 Skylink
               </Text>
