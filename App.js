@@ -64,7 +64,7 @@ function NewsStack() {
         component={NewsHome}
         options={{
           title: "News",
-          headerLeft: ({ tintColor }) => (
+          headerLeft: () => (
             <Text style={{ color: "#fc03a5", marginHorizontal: 15 }}>
               Skylink
             </Text>
@@ -96,7 +96,7 @@ function WeatherStack() {
       <Stack.Screen
         name="WeatherHome"
         component={WeatherHome}
-        options={({ navigation, route }) => {
+        options={({ navigation }) => {
           return {
             headerRight: ({ tintColor }) => (
               <IconButton
