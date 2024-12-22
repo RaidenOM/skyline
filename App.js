@@ -66,7 +66,7 @@ function NewsStack() {
           title: "News",
           headerLeft: () => (
             <Text style={{ color: "#fc03a5", marginHorizontal: 15 }}>
-              Skylink
+              Skyline
             </Text>
           ),
         }}
@@ -109,7 +109,7 @@ function WeatherStack() {
             ),
             headerLeft: () => (
               <Text style={{ color: "#fc03a5", marginHorizontal: 15 }}>
-                Skylink
+                Skyline
               </Text>
             ),
             title: "Weather",
