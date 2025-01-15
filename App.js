@@ -72,11 +72,7 @@ function NewsStack() {
           ),
         }}
       />
-      <Stack.Screen
-        name="ViewNews"
-        component={ViewNews}
-        options={{ title: "News" }}
-      />
+      <Stack.Screen name="ViewNews" component={ViewNews} />
     </Stack.Navigator>
   );
 }
@@ -92,6 +88,7 @@ function WeatherStack() {
           borderBottomStartRadius: 20,
           borderBottomEndRadius: 20,
         },
+        presentation: "modal",
       }}
     >
       <Stack.Screen
@@ -122,11 +119,7 @@ function WeatherStack() {
         component={AddLocation}
         options={{ title: "Add City" }}
       />
-      <Stack.Screen
-        name="ViewWeather"
-        component={ViewWeather}
-        options={{ title: "Weather" }}
-      />
+      <Stack.Screen name="ViewWeather" component={ViewWeather} />
     </Stack.Navigator>
   );
 }

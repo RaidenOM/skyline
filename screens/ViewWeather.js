@@ -1,5 +1,5 @@
-import { useRoute } from "@react-navigation/native";
-import { useEffect, useState } from "react";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { getWeatherDataFromBackend } from "../backend";
 import {
   Image,
@@ -12,7 +12,12 @@ import {
 
 export default function ViewWeather() {
   const route = useRoute();
+  const navigation = useNavigation();
   const { cityName } = route.params;
+
+  useLayoutEffect(() => {
+    navigation.setOptions({ title: cityName });
+  }, [cityName]);
 
   const [weatherData, setWeatherData] = useState(null);
 
