@@ -16,7 +16,7 @@ export default function WeatherHome() {
   return (
     <ScrollView>
       {allCities.map((city) => (
-        <CityListItem cityName={city} />
+        <CityListItem cityName={city} key={city} />
       ))}
     </ScrollView>
   );

@@ -1,9 +1,15 @@
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { useLayoutEffect } from "react";
 import { Image, StyleSheet, Text, ScrollView } from "react-native";
 
 export default function ViewNews() {
   const route = useRoute();
+  const navigation = useNavigation();
   const { item } = route.params;
+
+  useLayoutEffect(() => {
+    navigation.setOptions({ title: item.title });
+  }, [item.title]);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>

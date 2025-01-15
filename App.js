@@ -57,6 +57,7 @@ function NewsStack() {
           borderBottomStartRadius: 20,
           borderBottomEndRadius: 20,
         },
+        presentation: "modal",
       }}
     >
       <Stack.Screen
